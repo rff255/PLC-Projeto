@@ -16,7 +16,7 @@
 
 ; QUICKSORT Test
 
-"(begin (define length (lambda (lista) (if (eqv? lista '()) 0 (+ 1 (length (cdr lista))) ))) (define getMenores (lambda (lista thresh) (if (eqv? lista '()) '() (if (lt? (car lista) thresh) (cons (car lista) (getMenores (cdr lista))) (getMenores (cdr lista)) )) )) (define getMaiores (lambda (lista thresh) (if (eqv? lista '()) '() (if (lt? thresh (car lista)) (cons (car lista) (getMaiores (cdr lista))) (getMaiores (cdr lista)) )) )) (define quickSort  (lambda (lista) (if (lt? (length lista) 2) lista (cons (quickSort (getMenores lista (car lista))) (cons (car lista) (quickSort (getMaiores lista (car lista))))) ))) (define x '(5 3 8 4 2 1 9)) (quickSort x) )"    
+"(begin (define length (lambda (lista) (if (eqv? lista '()) 0 (+ 1 (length (cdr lista))) ))) (define getMenores (lambda (lista thresh) (if (eqv? lista '()) '() (if (lt? (car lista) thresh) (cons (car lista) (getMenores (cdr lista))) (getMenores (cdr lista)) )) )) (define getMaiores (lambda (lista thresh) (if (eqv? lista '()) '() (if (lt? thresh (car lista)) (cons (car lista) (getMaiores (cdr lista))) (if (eqv? thresh (car lista)) (cons (car lista) (getMaiores (cdr lista))) (getMaiores (cdr lista)) ) )) )) (define quickSort  (lambda (lista) (if (lt? (length lista) 2) lista (cons (quickSort (getMenores (cdr lista) (car lista))) (cons (car lista) (quickSort (getMaiores (cdr lista) (car lista))))) ))) (define x '(5 3 8 4 2 1 9 5 -1 20 7)) (quickSort x) )"
 
 ; MAKE-CLOSURE and SET Tests
 
